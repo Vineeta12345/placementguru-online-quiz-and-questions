@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PLACEMENTGURUModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ADMIN">
+    <Key>
+      <PropertyRef Name="AD_ID" />
+    </Key>
+    <Property Name="AD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AD_NAME" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="AD_PASSWORD" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CATEGORY">
+    <Key>
+      <PropertyRef Name="cat_id" />
+    </Key>
+    <Property Name="cat_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cat_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="cat_fk_adid" Type="int" />
+    <Property Name="cat_encrypt" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="EXAM">
+    <Key>
+      <PropertyRef Name="EXAM_ID" />
+    </Key>
+    <Property Name="EXAM_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EXAM_DATE" Type="datetime" />
+    <Property Name="EXAM_FK_USER" Type="int" />
+    <Property Name="EXAM_NAME" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="EXAM_USER_SCORE" Type="int" />
+  </EntityType>
+  <EntityType Name="QUESTIONS">
+    <Key>
+      <PropertyRef Name="QUESTION_ID" />
+    </Key>
+    <Property Name="QUESTION_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Q_TEXT" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OPA" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="OPB" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="OPC" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="OPD" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="COP" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="q_fk_catid" Type="int" />
+  </EntityType>
+  <EntityType Name="TBL_ADMIN">
+    <Key>
+      <PropertyRef Name="AD_ID" />
+    </Key>
+    <Property Name="AD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AD_NAME" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="AD_PASSWORD" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_USER">
+    <Key>
+      <PropertyRef Name="U_ID" />
+    </Key>
+    <Property Name="U_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="U_NAME" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="U_PASSWORD" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="U_IMAGE" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__CATEGORY__cat_fk__2F10007B">
+    <End Role="TBL_ADMIN" Type="Self.TBL_ADMIN" Multiplicity="0..1" />
+    <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_ADMIN">
+        <PropertyRef Name="AD_ID" />
+      </Principal>
+      <Dependent Role="CATEGORY">
+        <PropertyRef Name="cat_fk_adid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EXAM__EXAM_FK_US__2A4B4B5E">
+    <End Role="TBL_USER" Type="Self.TBL_USER" Multiplicity="0..1" />
+    <End Role="EXAM" Type="Self.EXAM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_USER">
+        <PropertyRef Name="U_ID" />
+      </Principal>
+      <Dependent Role="EXAM">
+        <PropertyRef Name="EXAM_FK_USER" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__QUESTIONS__q_fk___300424B4">
+    <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="0..1" />
+    <End Role="QUESTIONS" Type="Self.QUESTIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEGORY">
+        <PropertyRef Name="cat_id" />
+      </Principal>
+      <Dependent Role="QUESTIONS">
+        <PropertyRef Name="q_fk_catid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PLACEMENTGURUModelStoreContainer">
+    <EntitySet Name="ADMIN" EntityType="Self.ADMIN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CATEGORY" EntityType="Self.CATEGORY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EXAM" EntityType="Self.EXAM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QUESTIONS" EntityType="Self.QUESTIONS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_ADMIN" EntityType="Self.TBL_ADMIN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_USER" EntityType="Self.TBL_USER" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__CATEGORY__cat_fk__2F10007B" Association="Self.FK__CATEGORY__cat_fk__2F10007B">
+      <End Role="TBL_ADMIN" EntitySet="TBL_ADMIN" />
+      <End Role="CATEGORY" EntitySet="CATEGORY" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EXAM__EXAM_FK_US__2A4B4B5E" Association="Self.FK__EXAM__EXAM_FK_US__2A4B4B5E">
+      <End Role="TBL_USER" EntitySet="TBL_USER" />
+      <End Role="EXAM" EntitySet="EXAM" />
+    </AssociationSet>
+    <AssociationSet Name="FK__QUESTIONS__q_fk___300424B4" Association="Self.FK__QUESTIONS__q_fk___300424B4">
+      <End Role="CATEGORY" EntitySet="CATEGORY" />
+      <End Role="QUESTIONS" EntitySet="QUESTIONS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

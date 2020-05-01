@@ -1,0 +1,44 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>uexam</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <style>
+        body {
+            background-image: url("../../Content/img/HiRes-1-e1472112882517-850x510.jpg");
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+
+    @if (ViewBag.error != null)
+    {
+        <div class="alert alert-danger">
+            <strong>Sorry!</strong> @ViewBag.error
+        </div>
+    }
+    @using (Html.BeginForm())
+    {
+        <div class="container">
+            <br />
+            <br />
+            <h4 style="font-family:'Comic Sans MS';text-align:center"> Enter your phone number</h4>
+            <br />
+            <br />
+            <input type="text" id="room" name="room" placeholder="phone number" class="form-control" />
+            <br />
+            <br />
+            <input type="submit" value="SUBMIT" class="btn btn-info btn-block" />
+        </div>
+    }
+</body>
+</html>

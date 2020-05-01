@@ -1,0 +1,129 @@
+﻿
+@{
+    ViewBag.Title = "tquestion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-image: url("../../Content/img/HiRes-1-e1472112882517-850x510.jpg");
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <h2>Technical Questions</h2>
+
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <a data-toggle="collapse" href="#collapse1"><b>In header files whether functions are declared or defined?</b></a>
+                </h3>
+            </div>
+            <div id="collapse1" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <p style="font-size:20px">Functions are declared within header file. That is function prototypes exist
+                    in a header file,not function bodies. They are defined in library (lib)</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <a data-toggle="collapse" href="#collapse2"><b>Differences between C and Java?</b></a>
+                </h3>
+            </div>
+            <div id="collapse2" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <p style="font-size:20px">
+                        1.JAVA is Object-Oriented while C is procedural.<br/>
+
+                        2.Java is an Interpreted language while C is a compiled language.<br/>
+
+                        3.C is a low-level language while JAVA is a high-level language.<br/>
+
+                        4.C uses the top-down approach while JAVA uses the bottom-up approach.<br/>
+
+                        5.Pointer go backstage in JAVA while C requires explicit handling of pointers.<br/>
+
+                        6.The Behind-the-scenes Memory Management with JAVA & The User-Based Memory Management in C.<br/>
+
+                        7.JAVA supports Method Overloading while C does not support overloading at all.<br/>
+
+                        8.Unlike C, JAVA does not support Preprocessors, & does not really them.<br/>
+
+                        9.The standard Input & Output Functions--C uses the printf & scanf functions as its standard input & output while JAVA uses the System.out.print & System.in.read functions.
+                        <br/>
+                        10.Exception Handling in JAVA And the errors & crashes in C.<br/>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <a data-toggle="collapse" href="#collapse3"><b>What are the different storage classes in C ?</b></a>
+                </h3>
+            </div>
+            <div id="collapse3" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <p style="font-size:20px">
+                        There are four types of storage classes in C. They are extern, register, auto and static
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <a data-toggle="collapse" href="#collapse4"><b>What are macros? what are its advantages and disadvantages? </b></a>
+                </h3>
+            </div>
+            <div id="collapse4" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <p style="font-size:20px">
+                        Macros are processor directive which will be replaced at compile time.<br/>
+                        The disadvantage with macros is that they just replace the code they are not function calls. similarly the advantage is they can reduce time for replacing the same values.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <a data-toggle="collapse" href="#collapse5"><b>What is the difference between class and structure?</b></a>
+                </h3>
+            </div>
+            <div id="collapse5" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <p style="font-size:20px">
+                        Structure: Initially (in C) a structure was used to bundle different type of data types together to perform a particular functionality. But C++ extended the structure to contain functions also.
+                        The major difference is that all declarations inside a structure are by default public.<br/>
+                        Class: Class is a successor of Structure. By default all the members inside the class are private.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
+

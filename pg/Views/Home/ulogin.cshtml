@@ -1,0 +1,50 @@
+﻿@model pg.Models.TBL_USER
+@{
+    ViewBag.Title = "ulogin";
+}
+@if (ViewBag.msg != null)
+{
+    <div class="alert alert-danger">
+        <strong>Sorry!</strong> @ViewBag.msg
+    </div>
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4 style="font-weight:bold; font-family:'Comic Sans MS'">USER</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.U_NAME, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.U_NAME, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.U_NAME, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.U_PASSWORD, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.PasswordFor(model => model.U_PASSWORD, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.U_PASSWORD, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Register now", "uregister")
+</div>
+<div>
+
+    <img src="~/Content/img/User_login_man_profile_account.png" align="right" />
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

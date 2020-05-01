@@ -1,0 +1,66 @@
+﻿@model pg.Models.TBL_USER
+
+@{
+    Layout = null;
+}
+
+<style>
+    body {
+        background-image: url("../../Content/img/bigstock-Man-Having-an-Online-Registrat-73738582-720x537.jpg");
+        background-size: cover;
+    }
+</style>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <title>uregister</title>
+</head>
+<body>
+    @if(ViewBag.msg!=null)
+    {
+    <div class="alert alert-danger">
+        <strong>Sorry!</strong> @ViewBag.msg
+    </div>  
+    }
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8">
+                <div class="container" style="width:40%">
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <h2 style="font-weight:bold; font-family:'Comic Sans MS'">Register</h2>
+                    @using (@Html.BeginForm("uregister","Home",FormMethod.Post, new { enctype = "multipart/form-data"}))
+                    {
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            @*<input type="email" class="form-control" id="email" placeholder="Enter email" name="email">*@
+                            @Html.TextBoxFor(x => x.U_NAME, htmlAttributes: new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd">Password:</label>
+                            @Html.PasswordFor(x => x.U_PASSWORD, htmlAttributes: new { @class = "form-control" })
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pwd">Image:</label>
+                            <input type="file" class="form-control btn btn-info" id="imagefile" name="imagefile" />
+                        </div>
+                        <input type="submit" value="register" class="btn btn-default btn-block" />
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4">
+
+    </div>
+
+</body>
+</html>
